@@ -1,0 +1,22 @@
+/* .container,
+.container-fluid {
+  background-color: rgb(109, 240, 194);
+  border: black solid 5px;
+  color: rgb(0, 0, 0);
+}
+
+.row {
+  background-color: bisque;
+} */
+
+[class*='col'] {
+  /* border: black solid 5px;
+  background-color: rgb(100, 0, 228);
+  color: rgb(255, 255, 255);
+  padding-top: 10px; */
+  padding-bottom: 10px;
+}
+
+.btn {
+  padding: 50px;
+}
