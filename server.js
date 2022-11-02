@@ -8,6 +8,9 @@ import dotenv from 'dotenv';
 import xss from 'xss-clean';
 import connectDB from './db/connect.js';
 
+//routes
+import wordRouter from './routes/wordsRoutes.js';
+
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
@@ -23,6 +26,8 @@ app.use(express.json());
 app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
+
+app.use('/api/v1/words', wordRouter);
 
 //error handling
 app.use(notFoundMiddleware);
