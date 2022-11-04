@@ -21,6 +21,7 @@ const getAllWords = async () => {
     const { data } = await axios.get(url);
     const { words } = data;
 
+    console.log(data);
     words.map((word) => {
       wordsApiFetch.push(word);
       return;
