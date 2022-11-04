@@ -54,13 +54,12 @@ const paragraphCleaner = () => {
   workout8.innerHTML = null;
 };
 
-//Using floor/random a workout is chosen and is also set using the classes in HTML.
 const randomWorkoutGenerator = () => {
   //Not all workouts have the same size. paragraphCleaner() is called to clean the elements from previous workouts
   paragraphCleaner();
   //Generates a random number. Start:0; Finish: arr.length
   const random = Math.floor(Math.random() * arr.length);
-  //workout store the workout
+  //workout stores the workout
   let workout = arr[random];
   //Check if the keys are not False. If True the values are set
   if (workout.firstName) workName.innerHTML = workout.firstName;
