@@ -8,6 +8,7 @@ const workout5 = document.querySelector('.workout5');
 const workout6 = document.querySelector('.workout6');
 const workout7 = document.querySelector('.workout7');
 const workout8 = document.querySelector('.workout8');
+const link = document.querySelector('a');
 
 const arr = [
   {
@@ -18,6 +19,7 @@ const arr = [
     ex4: 'D',
     ex5: 'E',
     ex6: 'F',
+    link: 'https://www.geeksforgeeks.org',
   },
   {
     firstName: '2A',
@@ -52,6 +54,7 @@ const paragraphCleaner = () => {
   workout6.innerHTML = null;
   workout7.innerHTML = null;
   workout8.innerHTML = null;
+  link.innerHTML = null;
 };
 
 const randomWorkoutGenerator = () => {
@@ -62,6 +65,12 @@ const randomWorkoutGenerator = () => {
   //workout stores the workout
   let workout = arr[random];
   //Check if the keys are not False. If True the values are set
+  if (workout.link) {
+    link.getAttribute('href');
+    link.setAttribute('href', workout.link);
+    link.innerHTML = 'It Worked';
+  }
+  workout.link;
   if (workout.firstName) workName.innerHTML = workout.firstName;
   if (workout.ex1) workout1.innerHTML = workout.ex1;
   if (workout.ex2) workout2.innerHTML = workout.ex2;
