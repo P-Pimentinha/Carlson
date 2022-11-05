@@ -41,6 +41,13 @@ const WorkoutSchema = new mongoose.Schema({
     type: String,
     maxlength: 50,
   },
+  link: {
+    type: String,
+    maxlength: 50,
+  },
+  duration: {
+    type: Number,
+  },
 });
 
 export default mongoose.model('Workout', WorkoutSchema);
