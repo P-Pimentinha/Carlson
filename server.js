@@ -10,6 +10,7 @@ import connectDB from './db/connect.js';
 
 //routes
 import wordRouter from './routes/wordsRoutes.js';
+import workoutRouter from './routes/workoutRoutes.js';
 
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
@@ -28,6 +29,7 @@ app.use(xss());
 app.use(mongoSanitize());
 
 app.use('/api/v1/words', wordRouter);
+app.use('/api/v1/workouts', workoutRouter);
 
 //error handling
 app.use(notFoundMiddleware);
