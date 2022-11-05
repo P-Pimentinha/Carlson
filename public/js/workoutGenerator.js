@@ -10,6 +10,8 @@ const workout7 = document.querySelector('.workout7');
 const workout8 = document.querySelector('.workout8');
 const link = document.querySelector('a');
 
+let workoutsArr = [];
+
 const arr = [
   {
     firstName: '1A',
@@ -43,6 +45,23 @@ const arr = [
   },
 ];
 
+const getAllWorkouts = async () => {
+  const url = '/api/v1/workouts/';
+
+  try {
+    const { data } = await axios.get(url);
+    let { workouts } = data;
+    console.log(typeof data);
+    workouts.map((workout) => {
+      workoutsArr.push(workout);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getAllWorkouts();
+
 //clears the elements
 const paragraphCleaner = () => {
   workName.innerHTML = null;
@@ -61,16 +80,17 @@ const randomWorkoutGenerator = () => {
   //Not all workouts have the same size. paragraphCleaner() is called to clean the elements from previous workouts
   paragraphCleaner();
   //Generates a random number. Start:0; Finish: arr.length
-  const random = Math.floor(Math.random() * arr.length);
+  const random = Math.floor(Math.random() * workoutsArr.length);
   //workout stores the workout
-  let workout = arr[random];
+  let workout = workoutsArr[random];
   //Check if the keys are not False. If True the values are set
   if (workout.link) {
     link.getAttribute('href');
     link.setAttribute('href', workout.link);
-    link.innerHTML = 'It Worked';
+    link.innerHTML = workout.link;
+    return;
   }
-  workout.link;
+
   if (workout.firstName) workName.innerHTML = workout.firstName;
   if (workout.ex1) workout1.innerHTML = workout.ex1;
   if (workout.ex2) workout2.innerHTML = workout.ex2;

@@ -20,8 +20,6 @@ const getAllWords = async () => {
   try {
     const { data } = await axios.get(url);
     const { words } = data;
-
-    console.log(data);
     words.map((word) => {
       wordsApiFetch.push(word);
       return;
@@ -60,7 +58,6 @@ button.addEventListener('click', () => {
 buttonTwo.addEventListener('click', () => {
   randomSubjectGenerator();
 });
-
 /* setInterval(randomWordGenerator, 6000); */
 
 /* function timer() {

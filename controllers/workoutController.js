@@ -9,8 +9,8 @@ const createWorkout = async (req, res) => {
   //     throw new BadRequestError('Please Provide All Values');
   //   }
 
-  const words = await Workout.create(req.body);
-  res.status(StatusCodes.CREATED).json({ words });
+  const workouts = await Workout.create(req.body);
+  res.status(StatusCodes.CREATED).json({ workouts });
 };
 
 // !!!!!!!!!!!!!!!!!!!!!!!!
