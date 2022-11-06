@@ -1,1 +1,1 @@
-const counter = document.querySelector('.counter');
+id

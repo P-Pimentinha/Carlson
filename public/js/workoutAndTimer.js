@@ -21,24 +21,22 @@ const downButton = document.querySelector('.btnDown');
 
 // stores data returned from getAllWorkouts
 let workoutsArr = [];
+let dailyWorkouts = [];
 
 //get all the workouts using axios.get
-const getAllWorkouts = async () => {
-  const url = '/api/v1/workouts/';
+// const getAllWorkouts = async () => {
+//   const url = '/api/v1/workouts/';
 
-  try {
-    const { data } = await axios.get(url);
-    let { workouts } = data;
-    console.log(typeof data);
-    workouts.map((workout) => {
-      workoutsArr.push(workout);
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-getAllWorkouts();
+//   try {
+//     const { data } = await axios.get(url);
+//     let { workouts } = data;
+//     workouts.map((workout) => {
+//       workoutsArr.push(workout);
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 //clears the elements
 const paragraphCleaner = () => {
@@ -54,13 +52,61 @@ const paragraphCleaner = () => {
   link.innerHTML = null;
 };
 
+// get all the workouts using axios.get
+const getAllWorkouts = async () => {
+  const url = '/api/v1/workouts/';
+
+  try {
+    const { data } = await axios.get(url);
+    let { workouts } = data;
+    workoutsArr = workouts;
+    const localId = localStorage.getItem('id');
+    if (localId) {
+      paragraphCleaner();
+      let workoutIndex = workoutsArr.findIndex((x) => x._id === localId);
+      let workout = workoutsArr[workoutIndex];
+      if (workout.link) {
+        link.getAttribute('href');
+        link.setAttribute('href', workout.link);
+        link.innerHTML = workout.link;
+        return;
+      }
+      if (workout.workoutName) workName.innerHTML = workout.workoutName;
+      if (workout.ex1) workout1.innerHTML = workout.ex1;
+      if (workout.ex2) workout2.innerHTML = workout.ex2;
+      if (workout.ex3) workout3.innerHTML = workout.ex3;
+      if (workout.ex4) workout4.innerHTML = workout.ex4;
+      if (workout.ex5) workout5.innerHTML = workout.ex5;
+      if (workout.ex6) workout6.innerHTML = workout.ex6;
+      if (workout.ex7) workout7.innerHTML = workout.ex7;
+      if (workout.ex8) workout8.innerHTML = workout.ex8;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const postDailyWorkout = async (dat) => {
+  const url = '/api/v1/dailyWorkout';
+
+  try {
+    await axios.post(url, dat);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getAllWorkouts();
+
 const randomWorkoutGenerator = () => {
   //Before populating the elements they are sent to null
   paragraphCleaner();
   //Generates a random number. Start:0; Finish: array.length
   const random = Math.floor(Math.random() * workoutsArr.length);
   //stores a random workout
+
   let workout = workoutsArr[random];
+  localStorage.setItem('id', workout._id);
   //Check if the keys are not False. If True the values are set
   //if the object returned contains a link the function will stop running and only return the link
   if (workout.link) {
