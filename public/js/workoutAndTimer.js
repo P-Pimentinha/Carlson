@@ -10,8 +10,13 @@ const workout7 = document.querySelector('.workout7');
 const workout8 = document.querySelector('.workout8');
 const link = document.querySelector('a');
 
+////////////////////////////////////////////////////////
+//Workout Generator
+
+// stores data returned from getAllWorkouts
 let workoutsArr = [];
 
+//get all the workouts using axios.get
 const getAllWorkouts = async () => {
   const url = '/api/v1/workouts/';
 
@@ -44,20 +49,20 @@ const paragraphCleaner = () => {
 };
 
 const randomWorkoutGenerator = () => {
-  //Not all workouts have the same size. paragraphCleaner() is called to clean the elements from previous workouts
+  //Before populating the elements they are sent to null
   paragraphCleaner();
-  //Generates a random number. Start:0; Finish: arr.length
+  //Generates a random number. Start:0; Finish: array.length
   const random = Math.floor(Math.random() * workoutsArr.length);
-  //workout stores the workout
+  //stores a random workout
   let workout = workoutsArr[random];
   //Check if the keys are not False. If True the values are set
+  //if the object returned contains a link the function will stop running and only return the link
   if (workout.link) {
     link.getAttribute('href');
     link.setAttribute('href', workout.link);
     link.innerHTML = workout.link;
     return;
   }
-
   if (workout.workoutName) workName.innerHTML = workout.workoutName;
   if (workout.ex1) workout1.innerHTML = workout.ex1;
   if (workout.ex2) workout2.innerHTML = workout.ex2;
@@ -70,3 +75,6 @@ const randomWorkoutGenerator = () => {
 };
 
 generateWorkoutBtn.addEventListener('click', randomWorkoutGenerator);
+
+////////////////////////////////////////////////////////
+//Timer

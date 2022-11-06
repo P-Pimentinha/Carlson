@@ -1,3 +1,34 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row text-center">
+        <h1>Title</h1>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <p>Hello</p>
+        </div>
+        <div class="col text-center">
+          <p>Hello!</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +43,7 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/styleWorkout.css" />
+    <link rel="stylesheet" href="./css/workoutAndTimer.css" />
     <title>Carlson</title>
   </head>
   <body>
@@ -20,23 +51,35 @@
       <!---->
       <div class="row text-center">
         <div class="col p-2">
-          <h3>Wotkout Generator</h3>
+          <h3>Need Help With Workout?</h3>
         </div>
       </div>
       <div class="row text-center">
         <div class="col">
           <h2 class="workName"></h2>
           <a href=""></a>
-          <p class="workout1"></p>
-          <p class="workout2"></p>
-          <p class="workout3"></p>
-          <p class="workout4"></p>
-          <p class="workout5"></p>
-          <p class="workout6"></p>
-          <p class="workout7"></p>
-          <p class="workout8"></p>
+          <p class="workout1">-</p>
+          <p class="workout2">-</p>
+          <p class="workout3">-</p>
+          <p class="workout4">-</p>
+          <p class="workout5">-</p>
+          <p class="workout6">-</p>
+          <p class="workout7">-</p>
+          <p class="workout8">-</p>
+        </div>
+        <div class="col align-self-center">
+          <div class="timer">
+            <p class="counter">45</p>
+          </div>
+
+          <div class="buttons">
+            <button class="btnDown">Down</button>
+            <button class="btnStart">Start</button>
+            <button class="btnUp">Up</button>
+          </div>
         </div>
       </div>
+
       <div class="row text-center">
         <div class="col">
           <button class="generateWorkoutBtn">Generate</button>
@@ -50,7 +93,7 @@
     <!-- JavaScript -->
     <script
       type="module"
-      src="./js/workoutGenerator.js"
+      src="./js/workoutAndTimer.js"
       charset="uft-8"
     ></script>
     <!-- jquery -->

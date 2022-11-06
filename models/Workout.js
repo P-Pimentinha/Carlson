@@ -43,7 +43,7 @@ const WorkoutSchema = new mongoose.Schema({
   },
   link: {
     type: String,
-    maxlength: 50,
+    maxlength: 120,
   },
   duration: {
     type: Number,
