@@ -1,6 +1,5 @@
 import Workout from '../models/Workout.js';
 import { StatusCodes } from 'http-status-codes';
-import { BadRequestError, NotFoundError } from '../errors/index.js';
 
 const createWorkout = async (req, res) => {
   //   const { wort, word } = req.body;
