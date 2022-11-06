@@ -61,3 +61,7 @@
 .disable {
   opacity: 50%;
 }
+
+.counter {
+  font-size: 75px;
+}
