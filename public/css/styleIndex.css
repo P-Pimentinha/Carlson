@@ -9,6 +9,10 @@
   background-color: bisque;
 } */
 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 [class*='col'] {
   /* border: black solid 5px;
   background-color: rgb(100, 0, 228);
