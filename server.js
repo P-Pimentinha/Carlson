@@ -11,7 +11,6 @@ import connectDB from './db/connect.js';
 //routes
 import wordRouter from './routes/wordsRoutes.js';
 import workoutRouter from './routes/workoutRoutes.js';
-import dailyWorkoutRouter from './routes/dailyWorkoutRoutes.js';
 
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
@@ -31,7 +30,6 @@ app.use(mongoSanitize());
 
 app.use('/api/v1/words', wordRouter);
 app.use('/api/v1/workouts', workoutRouter);
-app.use('/api/v1/dailyWorkout', dailyWorkoutRouter);
 
 //error handling
 app.use(notFoundMiddleware);
