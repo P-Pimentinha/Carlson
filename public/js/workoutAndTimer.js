@@ -10,6 +10,8 @@ const workout6 = document.querySelector('.workout6');
 const workout7 = document.querySelector('.workout7');
 const workout8 = document.querySelector('.workout8');
 const link = document.querySelector('a');
+const timerClass = document.getElementById('mainTimer');
+
 //Timer
 const counter = document.querySelector('.counter');
 const startButton = document.querySelector('.btnStart');
@@ -50,6 +52,7 @@ const paragraphCleaner = () => {
   workout7.innerHTML = null;
   workout8.innerHTML = null;
   link.innerHTML = null;
+  timerClass.removeAttribute('hidden', '');
 };
 
 // get all the workouts using axios.get
@@ -69,6 +72,7 @@ const getAllWorkouts = async () => {
         link.getAttribute('href');
         link.setAttribute('href', workout.link);
         link.innerHTML = workout.link;
+        timerClass.setAttribute('hidden', '');
         return;
       }
       if (workout.workoutName) workName.innerHTML = workout.workoutName;
@@ -113,6 +117,7 @@ const randomWorkoutGenerator = () => {
     link.getAttribute('href');
     link.setAttribute('href', workout.link);
     link.innerHTML = workout.link;
+    timerClass.setAttribute('hidden', '');
     return;
   }
   if (workout.workoutName) workName.innerHTML = workout.workoutName;
