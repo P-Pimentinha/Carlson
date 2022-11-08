@@ -3,7 +3,7 @@ const startButton = document.querySelector('.btnStart');
 const upButton = document.querySelector('.btnUp');
 const downButton = document.querySelector('.btnDown');
 
-startButton.addEventListener('click', timerInt);
+startButton.addEventListener('click', initiateTimer);
 upButton.addEventListener('click', add);
 downButton.addEventListener('click', sub);
 
@@ -12,10 +12,9 @@ let initialTime = 45;
 counter.innerHTML = initialTime;
 let interval;
 
-function timerInt() {
+function initiateTimer() {
   startButton.classList.add('disable');
   startButton.setAttribute('disabled', '');
-
   interval = setInterval(timer, 1000);
 }
 

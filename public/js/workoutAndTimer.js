@@ -90,16 +90,6 @@ const getAllWorkouts = async () => {
   }
 };
 
-const postDailyWorkout = async (dat) => {
-  const url = '/api/v1/dailyWorkout';
-
-  try {
-    await axios.post(url, dat);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 getAllWorkouts();
 
 const randomWorkoutGenerator = () => {
@@ -135,7 +125,7 @@ generateWorkoutBtn.addEventListener('click', randomWorkoutGenerator);
 
 ////////////////////////////////////////////////////////
 //Timer
-startButton.addEventListener('click', timerInt);
+startButton.addEventListener('click', initiateTimer);
 upButton.addEventListener('click', add);
 downButton.addEventListener('click', sub);
 
@@ -144,10 +134,9 @@ let initialTime = 45;
 counter.innerHTML = initialTime;
 let interval;
 
-function timerInt() {
+function initiateTimer() {
   startButton.classList.add('disable');
   startButton.setAttribute('disabled', '');
-
   interval = setInterval(timer, 1000);
 }
 
