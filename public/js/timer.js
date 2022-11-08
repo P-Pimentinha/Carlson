@@ -45,3 +45,13 @@ function sub() {
   userTime -= 1;
   counter.innerHTML = initialTime;
 }
+
+// New Timer
+const constdownEl = document.getElementById('countdown');
+const startButtonEl = document.querySelector('.btnStartEL');
+const upButtonEl = document.querySelector('.btnUpEl');
+const downButtonEl = document.querySelector('.btnDownEL');
+
+let startingMinutes = 0;
+let startingSeconds = 45;
+constdownEl.innerHTML = `${startingMinutes}:${startingSeconds}`;
