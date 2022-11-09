@@ -14,8 +14,12 @@ const createWorkout = async (req, res) => {
 
 // !!!!!!!!!!!!!!!!!!!!!!!!
 const getWorkouts = async (req, res) => {
-  const workouts = await Workout.find();
-  res.status(StatusCodes.OK).json({ workouts });
+  try {
+    const workouts = await Workout.find();
+    res.status(StatusCodes.OK).json({ workouts });
+  } catch (error) {
+    return res.status(StatusCodes.BAD_REQUEST).send(`${error.message}`);
+  }
 };
 
 export { createWorkout, getWorkouts };
