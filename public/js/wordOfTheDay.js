@@ -1,5 +1,7 @@
 const button = document.querySelector('.start-btn');
 const buttonTwo = document.querySelector('.start-btn-two');
+const germanWord = document.getElementById('germanWord');
+const englishWord = document.getElementById('englishWord');
 
 let deuWord = '';
 let engWord = '';
@@ -13,6 +15,13 @@ const getAllWords = async () => {
     const { data } = await axios.get(url);
     const { words } = data;
     wordsApiFetch = words;
+    const localId = localStorage.getItem('word_id');
+    console.log(wordsApiFetch);
+    if (localId) {
+      let wordIndex = wordsApiFetch.findIndex((x) => x._id === localId);
+      germanWord.innerHTML = wordsApiFetch[wordIndex].wort;
+      englishWord.innerHTML = wordsApiFetch[wordIndex].word;
+    }
   } catch (e) {
     console.log(e);
   }
@@ -25,9 +34,9 @@ const randomWordGenerator = () => {
 
   localStorage.setItem('word_id', wordsApiFetch[random]._id);
 
-  document.getElementById('germanWord').innerHTML = wordsApiFetch[random].wort;
+  germanWord.innerHTML = wordsApiFetch[random].wort;
 
-  document.getElementById('englishWord').innerHTML = wordsApiFetch[random].word;
+  englishWord.innerHTML = wordsApiFetch[random].word;
 };
 
 button.addEventListener('click', () => {
