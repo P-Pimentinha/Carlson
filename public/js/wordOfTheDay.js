@@ -12,10 +12,7 @@ const getAllWords = async () => {
   try {
     const { data } = await axios.get(url);
     const { words } = data;
-    words.map((word) => {
-      wordsApiFetch.push(word);
-      return;
-    });
+    wordsApiFetch = words;
   } catch (e) {
     console.log(e);
   }
@@ -26,15 +23,11 @@ getAllWords();
 const randomWordGenerator = () => {
   const random = Math.floor(Math.random() * wordsApiFetch.length);
 
-  deuWord = wordsApiFetch[random].wort;
+  localStorage.setItem('word_id', wordsApiFetch[random]._id);
 
-  engWord = wordsApiFetch[random].word;
+  document.getElementById('germanWord').innerHTML = wordsApiFetch[random].wort;
 
-  console.log(wordsApiFetch[random]._id);
-
-  document.getElementById('germanWord').innerHTML = deuWord;
-
-  document.getElementById('englishWord').innerHTML = engWord;
+  document.getElementById('englishWord').innerHTML = wordsApiFetch[random].word;
 };
 
 button.addEventListener('click', () => {
