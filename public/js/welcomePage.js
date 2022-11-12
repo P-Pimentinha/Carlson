@@ -1,3 +1,5 @@
+import { data_greeting, quotes } from './data/data.js';
+
 const goodMorningEl = document.querySelector('.goodMorning');
 const weatherEl = document.querySelector('.weather');
 const quoteEl = document.querySelector('.quote');
@@ -20,7 +22,12 @@ async function getWeather() {
 }
 
 function setWelcomPage() {
+  const random_greeting = Math.floor(Math.random() * data_greeting.length);
+  const random_quote = Math.floor(Math.random() * quotes.length);
+
+  goodMorningEl.innerHTML = data_greeting[random_greeting];
   weatherEl.innerHTML = `${weatherInfo.main.temp} // ${weatherInfo.weather[0].main}`;
+  quoteEl.innerHTML = quotes[random_quote];
 }
 
 getWeather();
