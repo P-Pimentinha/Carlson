@@ -6,8 +6,8 @@ import {
   getWorkouts,
 } from '../controllers/workoutController.js';
 
-router.route('/').get(getWorkouts).post(createWorkout);
+// router.route('/').get(getWorkouts).post(createWorkout);
 
-/* router.route('/').get(getWords); */
+router.route('/').get(getWorkouts);
 
 export default router;
