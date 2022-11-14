@@ -12,34 +12,64 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/workout.css" />
+    <link rel="stylesheet" href="./css/styleMeal.css" />
     <title>Carlson</title>
   </head>
   <body>
     <div class="container">
       <!---->
-      <div class="row text-center align-self-center">
-        <div class="col">
-          <p>Monday</p>
-          <p>Tuesday</p>
-          <p>Wednesday</p>
-          <p>Thursday</p>
-          <p>Friday</p>
-          <p>Saturday</p>
-          <p>Sunday</p>
-          <button>Button</button>
+      <div class="row m-5">
+        <div class="col text-center">
+          <button class="returnResult">Hello</button>
         </div>
-        <div class="col">One of three columns</div>
+      </div>
+      <!-- Monday -->
+      <div class="row">
+        <div class="col-6 text-end">
+          <p>Monday: <span id="monday"></span></p>
+        </div>
+        <div class="col-6 text-start">
+          <ul id="mondayColUl"></ul>
+        </div>
+      </div>
+      <!-- Tuesday -->
+      <div class="row">
+        <div class="col-6 text-end">
+          <p>Tuesday: <span id="tuesday"></span></p>
+        </div>
+        <div class="col-6 text-start">
+          <ul id="tuesdayColUl"></ul>
+        </div>
+      </div>
+      <!-- Wednesday -->
+      <div class="row">
+        <div class="col-6 text-end">
+          <p>Wednesday: <span id="wednesday"></span></p>
+        </div>
+        <div class="col-6 text-start">
+          <ul id="wednesdayColUl"></ul>
+        </div>
+      </div>
+      <!-- Thursday -->
+      <div class="row">
+        <div class="col-6 text-end">
+          <p>Thursday: <span id="thursday"></span></p>
+        </div>
+        <div class="col-6 text-start">
+          <ul id="thursdayColUl"></ul>
+        </div>
+      </div>
+      <div class="row m-5">
+        <div class="col text-center">
+          <button>Hello</button>
+        </div>
       </div>
     </div>
+
     <!-- axios-->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- JavaScript -->
-    <script
-      type="module"
-      src="./js/workoutAndTimer.js"
-      charset="uft-8"
-    ></script>
+    <script type="module" src="./js/meal.js" charset="uft-8"></script>
     <!-- jquery -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
