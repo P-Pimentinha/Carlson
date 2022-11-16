@@ -15,7 +15,8 @@ const btn = document.querySelector('.returnResult');
 const spanElArr = [mondaySpan, tuesdaySpan, wednesdaySpan, thursdaySpan];
 const colElArr = [mondayColUl, tuesdayColUl, wednesdayColUl, thursdayColUl];
 
-let mealApiFetch = [];
+//Main array that stores the returned data from the DB
+// let mealApiFetch = [];
 
 //arrays that contain the different types of meals
 let riceArr = [];
@@ -24,23 +25,29 @@ let othersArr = [];
 let potatoesArr = [];
 
 //meal organizer stores the returned meals in the right arrays
-function mealArrayOrganizer(arr) {
-  arr.forEach((x) => {
-    if (x.main === 'pasta') pastaArr.push(x);
-    if (x.main === 'rice') riceArr.push(x);
-    if (x.main === 'others') othersArr.push(x);
-    if (x.main === 'potatoes') potatoesArr.push(x);
-  });
-}
+// function mealArrayOrganizer(arr) {
+//   arr.forEach((x) => {
+//     if (x.main === 'pasta') pastaArr.push(x);
+//     if (x.main === 'rice') riceArr.push(x);
+//     if (x.main === 'others') othersArr.push(x);
+//     if (x.main === 'potatoes') potatoesArr.push(x);
+//   });
+// }
 
 //axios Get request. Gets all the meals
 async function getAllMeals() {
   const url = '/api/v1/meal';
   try {
     const { data } = await axios.get(url);
-    mealApiFetch = data.meals;
-    console.log(mealApiFetch);
-    mealArrayOrganizer(mealApiFetch);
+    // mealApiFetch = data.meals;
+
+    data.meals.forEach((x) => {
+      if (x.main === 'pasta') pastaArr.push(x);
+      if (x.main === 'rice') riceArr.push(x);
+      if (x.main === 'others') othersArr.push(x);
+      if (x.main === 'potatoes') potatoesArr.push(x);
+    });
+    // mealArrayOrganizer(mealApiFetch);
   } catch (e) {
     console.log(e);
   }
