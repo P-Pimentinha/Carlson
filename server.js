@@ -12,6 +12,7 @@ import connectDB from './db/connect.js';
 import wordRouter from './routes/wordsRoutes.js';
 import workoutRouter from './routes/workoutRoutes.js';
 import weatherRouter from './routes/weatherRoute.js';
+import mealRouter from './routes/mealRoute.js';
 
 //middleware
 import notFoundMiddleware from './middleware/not-found.js';
@@ -32,6 +33,7 @@ app.use(mongoSanitize());
 app.use('/api/v1/words', wordRouter);
 app.use('/api/v1/workouts', workoutRouter);
 app.use('/api/v1/weather', weatherRouter);
+app.use('/api/v1/meal', mealRouter);
 
 //error handling
 app.use(notFoundMiddleware);
