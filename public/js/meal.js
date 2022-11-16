@@ -15,71 +15,38 @@ const btn = document.querySelector('.returnResult');
 const spanElArr = [mondaySpan, tuesdaySpan, wednesdaySpan, thursdaySpan];
 const colElArr = [mondayColUl, tuesdayColUl, wednesdayColUl, thursdayColUl];
 
-// main array
-let mealArr = [
-  { main: 'pasta', name: 'Pasta', ingredients: ['Pasta', 'Tomatoes', 'Basil'] },
-  {
-    main: 'pasta',
-    name: 'Rice',
-    ingredients: ['Pasta2', 'Tomatoes2', 'Basil2'],
-  },
-  {
-    main: 'pasta',
-    name: 'Potatoes',
-    ingredients: ['Pasta3', 'Tomatoes3', 'Basil3'],
-  },
-  {
-    main: 'others',
-    name: 'Wrap',
-    ingredients: ['Pasta4', 'Tomatoes4', 'Basil4', 'Oregano'],
-  },
-  {
-    main: 'others',
-    name: 'EatOut',
-    ingredients: ['Pasta4', 'Tomatoes4', 'Basil4', 'Oregano'],
-  },
-  {
-    main: 'rice',
-    name: 'Wrap2',
-    ingredients: ['Pasta4', 'Tomatoes4', 'Basil4', 'Oregano'],
-  },
-  {
-    main: 'rice',
-    name: 'Wrap3',
-    ingredients: ['Pasta4', 'Tomatoes4', 'Basil4', 'Oregano'],
-  },
-  {
-    main: 'rice',
-    name: 'Wrap4',
-    ingredients: ['Pasta4', 'Tomatoes4', 'Basil4', 'Oregano'],
-  },
-];
+let mealApiFetch = [];
 
 //arrays that contain the different types of meals
 let riceArr = [];
 let pastaArr = [];
 let othersArr = [];
+let potatoesArr = [];
 
 //meal organizer stores the returned meals in the right arrays
 function mealArrayOrganizer(arr) {
   arr.forEach((x) => {
-    if (x.main === 'pasta') {
-      pastaArr.push(x);
-    }
+    if (x.main === 'pasta') pastaArr.push(x);
     if (x.main === 'rice') riceArr.push(x);
     if (x.main === 'others') othersArr.push(x);
+    if (x.main === 'potatoes') potatoesArr.push(x);
   });
 }
 
-mealArrayOrganizer(mealArr);
+//axios Get request. Gets all the meals
+async function getAllMeals() {
+  const url = '/api/v1/meal';
+  try {
+    const { data } = await axios.get(url);
+    mealApiFetch = data.meals;
+    console.log(mealApiFetch);
+    mealArrayOrganizer(mealApiFetch);
+  } catch (e) {
+    console.log(e);
+  }
+}
 
-// array that contains unrepeated//random meals
-let randomMealGenerator = [
-  riceArr[Math.floor(Math.random() * riceArr.length)],
-  pastaArr[Math.floor(Math.random() * pastaArr.length)],
-  othersArr[Math.floor(Math.random() * othersArr.length)],
-  riceArr[Math.floor(Math.random() * riceArr.length)],
-];
+getAllMeals();
 
 function getMultipleRandom(arr, num) {
   const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -106,6 +73,13 @@ function mainIngredients(argOne, argTwo) {
 }
 
 function returnResult() {
+  // array that contains unrepeated//random meals
+  let randomMealGenerator = [
+    riceArr[Math.floor(Math.random() * riceArr.length)],
+    pastaArr[Math.floor(Math.random() * pastaArr.length)],
+    othersArr[Math.floor(Math.random() * othersArr.length)],
+    potatoesArr[Math.floor(Math.random() * potatoesArr.length)],
+  ];
   //using getMultipleRandom and randomMealGenerator an array with random values is stored in result
   let result = getMultipleRandom(randomMealGenerator, 4);
 
