@@ -44,8 +44,6 @@ function getMultipleRandom(arr, num) {
   return shuffled.slice(0, num);
 }
 
-//using getMultipleRandom and randomMealGenerator an array with random values is stored in result
-
 function mealName(argOne, argTwo) {
   for (let i = 0; i < argOne.length; i++) {
     argOne[i].innerHTML = argTwo[i].name;
