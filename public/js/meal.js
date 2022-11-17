@@ -1,3 +1,5 @@
+import { randomArrayValues } from './components/randomArrayValues.js';
+
 // html element span
 const mondaySpan = document.getElementById('monday');
 const tuesdaySpan = document.getElementById('tuesday');
@@ -38,12 +40,6 @@ let potatoesArr = [];
   }
 })();
 
-function getMultipleRandom(arr, num) {
-  const shuffled = [...arr].sort(() => 0.5 - Math.random());
-
-  return shuffled.slice(0, num);
-}
-
 function mealName(argOne, argTwo) {
   for (let i = 0; i < argOne.length; i++) {
     argOne[i].innerHTML = argTwo[i].name;
@@ -68,8 +64,8 @@ function returnResult() {
     othersArr[Math.floor(Math.random() * othersArr.length)],
     potatoesArr[Math.floor(Math.random() * potatoesArr.length)],
   ];
-  //using getMultipleRandom and randomMealGenerator an array with random values is stored in result
-  let result = getMultipleRandom(randomMealGenerator, 4);
+  //using randomArrayValues and randomMealGenerator an array with random values is stored in result
+  let result = randomArrayValues(randomMealGenerator, 4);
 
   spanElArr.forEach((x) => {
     x.innerHTML = null;
